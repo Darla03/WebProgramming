@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="Darlene">
+    <title>FlexBox Example</title>
+    <style>
+        .flex-container{
+            display:flex;
+            justify-content: space-evenly;
+            align-items:center;
+            flex-wrap: wrap;
+            gap:25px;
+            background: linear-gradient(90deg, #f7dc6f, #f39c12);
+            border:2px solid #d35400;
+            border-radius:5px;
+            
+        }
+        .flex-item {
+            background-color: #5dade2;
+            padding: 30px;
+            border: 2px solid #21618c;
+            border-radius: 10px;
+            font-weight: bold;
+            text-align: center;
+            transition: transform 0.3s background-color 0.3s;
+        }
+        .flex-item:hover{
+            transform:scale(1.1);
+            background-color:#2874a6;
+        }
+    </style>
+</head>
+<body>
+    <h1>FlexBox Layout Example</h1>
+    <div class="flex-container">
+        <div class="flex-item">Item1</div>
+        <div class="flex-item">Item2</div>
+        <div class="flex-item">Item3</div>
+        <div class="flex-item">Item4</div>
+        <div class="flex-item">Item4</div>
+    </div>
+
+</body>
+</html>
