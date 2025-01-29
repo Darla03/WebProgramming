@@ -1,0 +1,29 @@
+
+body{
+    font-family: arial, Arial, Helvetica, sans-serif;
+    background-color: rgb(0, 70, 105);
+    color: white;
+    text-align: center;
+}
+h1{
+    color: rgb(255, 95, 111);
+    text-align: center;
+}
+.stitch-button { 
+    background-color: aliceblue;
+    border-radius: 15px;
+    border:2px solid rgb(255, 95, 111);
+    padding: 10px 20px;
+    font-size: 16px;
+    color: rgb(0, 70, 105);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+   
+
+}
+.stitch-button:hover {
+    transform:scale(1.1);
+    background-color:#9cd8ff;
+    color: rgb(248, 144, 144);
+}
+

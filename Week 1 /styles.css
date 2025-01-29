@@ -1,0 +1,21 @@
+
+body{
+            font-family: arial, Arial, Helvetica, sans-serif;
+            background-color: grey;
+            color: white;
+        }
+        h1{
+            color: rgb(17, 82, 17);
+            text-align: center;
+        }
+        p{
+            font-size: 16px;
+            text-align: center;
+        }
+.highlight{
+    background-color: rgb(17, 82, 17);
+    padding: 10px;
+
+}
+
+    
