@@ -30,6 +30,6 @@ button{
     margin:5px;
 
 }
-button:hoover{
+button:hover{
     background-color: blue;
 }
