@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Darlene">
+    <title>Assignment 7</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+     <form>
+        First Name: <input type="text" id="first" 
+        placeholder="Enter your first name here" size="15" autofocus><br><br>
+
+        Last Name: <input type="text" id="last" 
+        placeholder="Enter your last name " size="15"><br><br>
+
+        Email: <input type="text" id="email" 
+        placeholder="Enter your email " size="15"><br><br>
+
+        Password: <input type="text" id="password" 
+        placeholder="Enter your password " size="15"><br><br>
+        
+        Age: <input type="text" id="age" 
+        placeholder="Enter your age " size="15"><br><br>
+
+        <label>Gender:</label><br> 
+        <input type="radio" name="gender" value="Male"> Male<br>
+        <input type="radio" name="gender" value="Female"> Female<br>
+        <input type="radio" name="gender" value="Other"> Other<br><br>
+
+        <label for="country">Country:</label>
+        <select id="country" required>
+            <option value="">Select your country</option>
+            <option value="USA">USA</option>
+            <option value="Canada">Canada</option>
+            <option value="UK">UK</option>
+            <option value="Japan">Japan</option>
+            <option value="Honduras">Honduras</option>
+        </select><br><br>
+
+       
+        <label for="terms">I agree to the Terms and Conditions</label>
+        <input type="checkbox" id="terms" required>
+        <br><br>
+
+        <center><button type="submit">Submit</button></center>
+    </form>
+
+    <div id="output"></div>
+    
+    <script src="script.js"></script>
+
+</body>
+</html>
