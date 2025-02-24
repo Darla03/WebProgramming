@@ -5,14 +5,6 @@ alert("Message!");
 
 let level =23; 
 
-
-
-
-
-
-
-
-
 let name=["Earth", "Water","Fire"];
 let array=[];
 name[0]="Hello ";
