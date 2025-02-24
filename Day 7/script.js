@@ -40,3 +40,30 @@ document.getElementById("asyncButton").addEventListener("click",async() =>{
     let response = await fetchData();
     output.textContent = response; 
 });
+
+//on click button background change 
+
+
+
+//function that takes an array of numbers and returns max value
+
+const max = [20,45,65,78,2,5,6,7,8];
+console.log(Math.max(...max));
+
+//Counts the number of vowels in a string 
+
+const countVowels = (s) =>{
+    const vowel = "aeiouAEIOU";
+    let count = 0;
+
+    for( const char of s){
+        if(vowel.includes(char)){
+            count++;
+        }
+    }
+    return count;
+};
+
+const s = "ate cereal";
+console.log(countVowels(s));
+
