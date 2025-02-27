@@ -1,23 +1,24 @@
-import reacy from "react";
-import card from "./Card";
+import react from "react";
+import Card from "./Card";
 import "./App.css";
 
-function APP(){
+function App(){
   const cards =[
-    {title: "Card 1", content: "first", color : "white"},
-    {title: "Card 2", content: "first", color : "white"},
-    {title: "Card 3", content: "first", color : "white"},
+    {title: "Card 1", content: "First", color : "white"},
+    {title: "Card 2", content: "Second", color : "green"},
+    {title: "Card 3", content: "Third", color : "blue"},
   
 ];
+
 return(
   <div className="container"> 
-  {
-    card.map((card,index)=>{
-      <Card key= {index}{...Card}
-    })
-  }
-  
-  
-  </div>
-)
+    {cards.map((card,index)=>(
+      <Card key= {index}{...card} />
+   ))}
+ </div>
+);
+}
 
+export default App; 
+
+  
