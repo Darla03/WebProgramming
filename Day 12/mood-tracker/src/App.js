@@ -1,10 +1,10 @@
-import logo from './logo.svg';
+import MoodTracker from './MoodTracker';
 import './App.css';
 
 function App() {
   return (
 <div >
-  
+  <MoodTracker/>
 </div>
   );
 }

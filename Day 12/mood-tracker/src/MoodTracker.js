@@ -1,7 +1,7 @@
 import {useState} from 'react';
 
 export default function MoodTracker(){
-    const [mood,setMood] =useState("😃");
+    const [mood, setMood] =useState("😃");
 
     return(
         <div stylr={{textAlign:"center",padding: "20px"}}>
