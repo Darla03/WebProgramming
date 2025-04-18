@@ -16,7 +16,7 @@ function App() {
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Error fetching posts:", err);
+        console.error("Error fetching review posts:", err);
         setLoading(false);
       });
   }, []);
@@ -25,7 +25,7 @@ function App() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // Create or Update post
+
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,7 +37,7 @@ function App() {
           setForm({ title: "", body: "" });
           setEditingId(null);
         })
-        .catch((err) => console.error("Error updating post:", err));
+        .catch((err) => console.error("Error updating review:", err));
     } else {
       axios
         .post("http://localhost:5001/posts", form)
@@ -45,18 +45,18 @@ function App() {
           setPosts([res.data, ...posts]);
           setForm({ title: "", body: "" });
         })
-        .catch((err) => console.error("Error submitting post:", err));
+        .catch((err) => console.error("Error submitting review:", err));
     }
   };
 
   const handleDelete = (id) => {
-    if (window.confirm("Are you sure you want to delete this post?")) {
+    if (window.confirm("Are you sure you want to delete this review?")) {
       axios
         .delete(`http://localhost:5001/posts/${id}`)
         .then(() => {
           setPosts(posts.filter((post) => post._id !== id));
         })
-        .catch((err) => console.error("Error deleting post:", err));
+        .catch((err) => console.error("Error deleting review:", err));
     }
   };
 
@@ -67,7 +67,7 @@ function App() {
 
   return (
     <div style={{ padding: "20px", maxWidth: "600px", margin: "auto" }}>
-      <h2>{editingId ? "Edit Post" : "Leave a review"}</h2>
+      <h2>{editingId ? "Edit Post" : "Leave a review of anything you want"}</h2>
 
       <form onSubmit={handleSubmit} style={{ marginBottom: "2rem" }}>
         <input
@@ -96,9 +96,9 @@ function App() {
 
       <h2>Reviews</h2>
       {loading ? (
-        <p>Loading posts...</p>
+        <p>Loading...</p>
       ) : posts.length === 0 ? (
-        <p>No Reviews yet.</p>
+        <p>No reviews yet.</p>
       ) : (
         posts.map((post) => (
           <div

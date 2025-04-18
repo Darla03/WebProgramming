@@ -1,5 +1,16 @@
 # Getting Started with Create React App
 
+This project job is to leave a review to anyone anonymously and they can edit or delete it as they please. It uses 5001 instead of 5000 because i kept getting some errors, and I was reading to change it to 5001 instead to resolve the issues, and it worked. 
+
+I added a delete feature that allows you to delete what you have written. It will also has a screen pop up if you would like to confirm deletion. 
+
+I added an edit feature if you would like to edit what you have posted. 
+
+There is timestaps included for funsies. 
+
+I attempted to add loading but not sure if that one ended up working. At 1 AM my brain kind of went blank. 
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
