@@ -2,28 +2,32 @@ const express = require('express');
 const cors = require('cors');
 const { Pool } = require('pg');
 
+
+
 const app = express();
 const PORT = 5000;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+require('dotenv').config();  // Add this to load environment variables
+
 
 
 const personalPool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
+  user: 'postgres',
+  host: 'localhost',
+  database: 'personal_info',
+  password: '12345',
+  port: 5432,
 });
 
 const hobbiesPool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
+  user: 'postgres',
+  host: 'localhost',
+  database: 'hobbies',
+  password: '12345',
+  port: 5432,
 });
 
 
