@@ -1,13 +1,22 @@
 
 const express = require("express");
 const mongoose = require('mongoose');
-const cors = require('cors');
+const cors = require("cors");
+
+
 
 const app =express();
-const PORT =5000;
+const PORT =5001;
+
+app.use(
+  cors({
+    origin: "http://localhost:3000", 
+    methods: ["GET", "POST", "PUT", "DELETE"], 
+    credentials: true, 
+  })
+);
 
 //middleWare 
-app.use(cors());
 app.use(express.json());
 
 
@@ -20,20 +29,23 @@ mongoose.connect('mongodb://127.0.0.1:27017/blogDB', {
 .catch((err) => console.error('MongoDB error', err));
 
 
-//define schema and model 
+//schema
 
-const postSchema = new mongoose.Schema({
+const postSchema = new mongoose.Schema(
+  {
     title:String,
     body: String,
-});
+  },
+  { timestamps: true }
+);
 
-const post = mongoose.model('Post', postSchema);
+const Post = mongoose.model('Post', postSchema);
 
-//add routes 
+//adding routes here 
 
 app.get('/posts', async (req,res)=> {
     try{
-        const posts = await post.find();
+        const posts = await Post.find();
         res.json(posts);
     }catch(err){
         res.status(500).json({message: 'Failed to fetch posts'});
@@ -43,7 +55,7 @@ app.get('/posts', async (req,res)=> {
 app.post('/posts', async (req,res)=>{
     try{
         const {title, body} = req.body;
-        const newPost = new post ({title, body});
+        const newPost = new Post ({title, body});
         await newPost.save();
         res.json(newPost);
     }catch(err){
@@ -51,33 +63,30 @@ app.post('/posts', async (req,res)=>{
     }
 });
 
-
-app.delete('/posts/:id', async (req, res) => {
-    try {
-      const deletedPost = await Post.findByIdAndDelete(req.params.id);
-      if (!deletedPost) return res.status(404).json({ message: 'Post not found' });
-      res.json({ message: 'Post deleted', id: deletedPost._id });
-    } catch (err) {
-      res.status(500).json({ message: 'Failed to delete post' });
-    }
-    app.put('/posts/:id', async (req, res) => {
-        try {
-          const { title, body } = req.body;
-          const updatedPost = await Post.findByIdAndUpdate(
-            req.params.id,
-            { title, body },
-            { new: true }
-          );
-          if (!updatedPost) return res.status(404).json({ message: 'Post not found' });
-          res.json(updatedPost);
-        } catch (err) {
-          res.status(500).json({ message: 'Failed to update post' });
-        }
-      });
-      //start server 
-
-app.listen(PORT,()=>{
-    console.log(`Server is running on http://localhost:${PORT}`);
+app.put("/posts/:id", async (req, res) => {
+  try {
+    const { title, body } = req.body;
+    const updated = await Post.findByIdAndUpdate(
+      req.params.id,
+      { title, body },
+      { new: true }
+    );
+    res.json(updated);
+  } catch (err) {
+    res.status(500).json({ message: "Failed to update post" });
+  }
 });
-  });
-  
+
+app.delete("/posts/:id", async (req, res) => {
+  try {
+    await Post.findByIdAndDelete(req.params.id);
+    res.json({ message: "Post deleted" });
+  } catch (err) {
+    res.status(500).json({ message: "Failed to delete post" });
+  }
+});
+      //starting server....
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});

@@ -7,10 +7,10 @@ function App() {
   const [editingId, setEditingId] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Fetch posts
+ 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/posts")
+      .get("http://localhost:5001/posts")
       .then((res) => {
         setPosts(res.data);
         setLoading(false);
@@ -26,11 +26,12 @@ function App() {
   };
 
   // Create or Update post
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     if (editingId) {
       axios
-        .put(`http://localhost:5000/posts/${editingId}`, form)
+        .put(`http://localhost:5001/posts/${editingId}`, form)
         .then((res) => {
           setPosts(posts.map((p) => (p._id === editingId ? res.data : p)));
           setForm({ title: "", body: "" });
@@ -39,7 +40,7 @@ function App() {
         .catch((err) => console.error("Error updating post:", err));
     } else {
       axios
-        .post("http://localhost:5000/posts", form)
+        .post("http://localhost:5001/posts", form)
         .then((res) => {
           setPosts([res.data, ...posts]);
           setForm({ title: "", body: "" });
@@ -51,7 +52,7 @@ function App() {
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this post?")) {
       axios
-        .delete(`http://localhost:5000/posts/${id}`)
+        .delete(`http://localhost:5001/posts/${id}`)
         .then(() => {
           setPosts(posts.filter((post) => post._id !== id));
         })
@@ -66,19 +67,19 @@ function App() {
 
   return (
     <div style={{ padding: "20px", maxWidth: "600px", margin: "auto" }}>
-      <h2>{editingId ? "Edit Post" : "Create a Blog Post"}</h2>
+      <h2>{editingId ? "Edit Post" : "Leave a review"}</h2>
 
       <form onSubmit={handleSubmit} style={{ marginBottom: "2rem" }}>
         <input
           name="title"
-          placeholder="Post Title"
+          placeholder="Subject"
           value={form.title}
           onChange={handleChange}
           style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
         />
         <textarea
           name="body"
-          placeholder="Post Body"
+          placeholder="Review here"
           value={form.body}
           onChange={handleChange}
           style={{
@@ -93,11 +94,11 @@ function App() {
         </button>
       </form>
 
-      <h2>Blog Posts</h2>
+      <h2>Reviews</h2>
       {loading ? (
         <p>Loading posts...</p>
       ) : posts.length === 0 ? (
-        <p>No posts yet.</p>
+        <p>No Reviews yet.</p>
       ) : (
         posts.map((post) => (
           <div
